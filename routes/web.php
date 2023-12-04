@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,18 @@ Route::get('/about', function () {
     ];
     return view('about', $data);
 });
+route::get('/product', [ProductController::class,'index']);
+route::get('/product/create', [ProductController::class,'create']);
+route::POST('/product', [ProductController::class,'store']);
+route::PUT('/product/{id}', [ProductController::class,'update']);
+route::delete('/product/{id}', [ProductController::class,'destsroy']);
+Auth::routes();
+
 route::get('/user', [UserController::class,'index']);
 route::get('/user/create', [UserController::class,'create']);
 route::POST('/user', [UserController::class,'store']);
 route::PUT('/user/{id}', [UserController::class,'update']);
 route::delete('/user/{id}', [UserController::class,'destsroy']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
