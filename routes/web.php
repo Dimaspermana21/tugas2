@@ -26,10 +26,11 @@ Route::get('/about', function () {
     return view('about', $data);
 });
 route::get('/product', [ProductController::class,'index']);
-route::get('/product/create', [ProductController::class,'create']);
+route::get('/create', [ProductController::class,'create']);
 route::POST('/product', [ProductController::class,'store']);
-route::PUT('/product/{id}', [ProductController::class,'update']);
-route::delete('/product/{id}', [ProductController::class,'destsroy']);
+route::get('/product/{id}/edit', [ProductController::class,'edit']);
+route::put('/product/{id}', [ProductController::class,'update']);
+route::delete('/product/{id}', [ProductController::class,'destroy']);
 Auth::routes();
 
 route::get('/user', [UserController::class,'index']);
